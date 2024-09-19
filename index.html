@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Dry Chubbs</title>
+  <meta charset="UTF-8">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      margin-top: 50px;
+    }
+    #days-since {
+      font-size: 2em;
+      color: #333;
+    }
+  </style>
+</head>
+<body>
+  <div id="days-since"></div>
+  <script type="text/javascript">
+    // Replace 'YYYY-MM-DD' with your specified date
+    var specifiedDate = new Date('2024-05-18');
+    var today = new Date();
+    // Calculate time difference in milliseconds
+    var timeDifference = today - specifiedDate;
+    // Convert time difference from milliseconds to days
+    var daysDifference = Math.floor(timeDifference / (1000 * 60 * 60 * 24));
+    // Display the result
+    document.getElementById('days-since').innerHTML = daysDifference + " days of dry chubbs";
+  </script>
+</body>
+</html>
