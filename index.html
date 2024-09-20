@@ -14,17 +14,24 @@
       color: #333;
     }
   </style>
+  <!-- Include Luxon -->
+  <script src="https://cdn.jsdelivr.net/npm/luxon@3.3.0/build/global/luxon.min.js"></script>
 </head>
 <body>
   <div id="days-since"></div>
   <script type="text/javascript">
+    // Set the time zone to California
+    const timeZone = 'America/Los_Angeles'; // California time zone
+
     // Replace 'YYYY-MM-DD' with your specified date
-    var specifiedDate = new Date('2024-05-18');
-    var today = new Date();
-    // Calculate time difference in milliseconds
-    var timeDifference = today - specifiedDate;
-    // Convert time difference from milliseconds to days
-    var daysDifference = Math.floor(timeDifference / (1000 * 60 * 60 * 24));
+    const specifiedDate = luxon.DateTime.fromISO('2024-05-18', { zone: timeZone }).startOf('day');
+
+    // Get the current date in California time
+    const today = luxon.DateTime.now().setZone(timeZone).startOf('day');
+
+    // Calculate time difference in days
+    const daysDifference = Math.floor(today.diff(specifiedDate, 'days').days);
+
     // Display the result
     document.getElementById('days-since').innerHTML = daysDifference + " days of dry chubbs";
   </script>
